@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.employeeManagementSystem.model.EmployeeBasicDetails;
-import com.project.employeeManagementSystem.service.EmployeeBasicDetailsServices;
+import com.project.employeeManagementSystem.service.EmployeeBasicDetailsService;
 
 /*
  * EmployeeBasicDetailsController is responsible for processing user requests.
@@ -29,7 +29,7 @@ import com.project.employeeManagementSystem.service.EmployeeBasicDetailsServices
 public class EmployeeBasicDetailsController {
 
 	@Autowired
-	EmployeeBasicDetailsServices service;
+	EmployeeBasicDetailsService service;
 
 	/*
 	 * getAllEmployees() is used to get all the employee details

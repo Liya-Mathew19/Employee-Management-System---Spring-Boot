@@ -11,6 +11,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*
+ * ContactPerson model class contains the data required to store and retrieve contact person informations
+ * @author Liya Mathew
+ * @since 09/10/2021
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class EmployeeSalary {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int salaryId;
 	
 	@Column(name = "EmployeeIdNumber")

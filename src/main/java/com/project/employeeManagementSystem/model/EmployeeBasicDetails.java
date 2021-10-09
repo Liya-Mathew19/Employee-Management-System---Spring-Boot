@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 public class EmployeeBasicDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "employeeIdNumber" )
 	int employeeIdNumber;
 
@@ -103,9 +103,9 @@ public class EmployeeBasicDetails {
 	@Column(name = "maritalStatus")
 	String maritalStatus;
 	
-//	@OneToMany(targetEntity = ContactPerson.class,cascade = CascadeType.ALL)
-//	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-//	private List<ContactPerson> contacts;
+	@OneToMany(targetEntity = ContactPerson.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
+	private List<ContactPerson> contacts;
 //	
 //	@OneToMany(targetEntity = WorkingHistory.class,cascade = CascadeType.ALL)
 //	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")

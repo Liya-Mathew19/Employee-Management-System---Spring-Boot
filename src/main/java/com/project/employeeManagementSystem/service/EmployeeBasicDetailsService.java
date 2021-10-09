@@ -13,13 +13,13 @@ import com.project.employeeManagementSystem.model.EmployeeBasicDetails;
 import com.project.employeeManagementSystem.repository.EmployeeBasicDetailsRepository;
 
 /*
- * EmployeeBasicDetailsServices is used to perform perform service tasks.
+ * EmployeeBasicDetailsService is used to perform perform service tasks of Employee Basic Details module
  * @author Liya Mathew
  * @since 08/10/2021
  */
 @Service
 @Transactional
-public class EmployeeBasicDetailsServices {
+public class EmployeeBasicDetailsService {
 
 	@Autowired
 	private EmployeeBasicDetailsRepository repository;

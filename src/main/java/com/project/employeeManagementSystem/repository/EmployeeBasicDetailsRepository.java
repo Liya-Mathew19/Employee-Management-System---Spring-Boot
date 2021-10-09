@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.project.employeeManagementSystem.model.EmployeeBasicDetails;
 
 /*
- * EmployeeBasicDetailsRepository extends the JpaRepository which contains all the basic CRUD operations
+ * EmployeeBasicDetailsRepository extends the JpaRepository which contains all the basic CRUD operations Employee Basic Details module
  * @author Liya Mathew
  * @since 08/10/2021
  */

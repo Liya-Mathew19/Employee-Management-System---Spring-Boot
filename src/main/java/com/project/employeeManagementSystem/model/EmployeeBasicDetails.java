@@ -106,11 +106,11 @@ public class EmployeeBasicDetails {
 	@OneToMany(targetEntity = ContactPerson.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
 	private List<ContactPerson> contacts;
-//	
-//	@OneToMany(targetEntity = WorkingHistory.class,cascade = CascadeType.ALL)
-//	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-//	private List<WorkingHistory> workHistory;
-//	
+	
+	@OneToMany(targetEntity = WorkHistory.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
+	private List<WorkHistory> workHistory;
+	
 	@OneToMany(targetEntity = EmployeeSalary.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
 	private List<EmployeeSalary> salary;

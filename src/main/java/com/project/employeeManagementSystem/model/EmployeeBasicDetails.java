@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 public class EmployeeBasicDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "employeeIdNumber" )
 	int employeeIdNumber;
 

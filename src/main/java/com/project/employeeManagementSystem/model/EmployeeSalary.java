@@ -20,14 +20,16 @@ public class EmployeeSalary {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int salaryId;
+	
 	@Column(name = "EmployeeIdNumber")
-	private int id;
+	private int EmployeeIdNumber;
 	
 	@Column(name = "MonthlySalary")
 	private Double MonthlySalary;
 	
 	@Column(name = "MonthlyMoneyCurrency")
-	private Double MonthlyMoneyCurrency;
+	private String MonthlyMoneyCurrency;
 	
 	@Column(name = "MonthlyTaxes")
 	private Double MonthlyTaxes;
@@ -39,25 +41,28 @@ public class EmployeeSalary {
 	private Double MonthlyInsurances;
 	
 	@Column(name = "msFromDateDay")
-	private Double msFromDateDay;
+	private int msFromDateDay;
+	
+	@Column(name = "msFromDateMonth")
+	private int msFromDateMonth;
 	
 	@Column(name = "msFromDateYear")
-	private Double msFromDateYear;
+	private int msFromDateYear;
 	
 	@Column(name = "msToDateDay")
-	private Double msToDateDay;
+	private int msToDateDay;
 	
 	@Column(name = "msToDateMonth")
-	private Double msToDateMonth;
+	private int msToDateMonth;
 	
 	@Column(name = "msToDateYear")
-	private Double msToDateYear;
+	private int msToDateYear;
 	
 	@Column(name = "WeeklySalary")
 	private Double WeeklySalary;
 	
 	@Column(name = "WeeklyMoneyCurrency")
-	private Double WeeklyMoneyCurrency;
+	private String WeeklyMoneyCurrency;
 	
 	@Column(name = "WeeklyTaxes")
 	private Double WeeklyTaxes;
@@ -69,21 +74,21 @@ public class EmployeeSalary {
 	private Double WeeklyInsurances;
 	
 	@Column(name = "wsFromDateDay")
-	private Double wsFromDateDay;
+	private int wsFromDateDay;
 	
 	@Column(name = "wsFromdateMonth")
-	private Double wsFromDateMonth;
+	private int wsFromDateMonth;
 	
 	@Column(name = "wsFromDateYear")
-	private Double wsfromDateYear;
+	private int wsfromDateYear;
 	
 	@Column(name = "wsToDateDay")
-	private Double wsToDateDay;
+	private int wsToDateDay;
 	
 	@Column(name = "wsToDateMonth")
-	private Double wsToDateMonth;
+	private int wsToDateMonth;
 	
 	@Column(name = "wsToDateYear")
-	private Double wsToDateYear;
+	private int wsToDateYear;
 	
 }

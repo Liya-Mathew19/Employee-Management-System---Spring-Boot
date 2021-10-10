@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
  * @author Liya Mathew
  * @since 08/10/2021
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,92 +29,92 @@ import lombok.NoArgsConstructor;
 public class EmployeeBasicDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "employeeIdNumber" )
-	int employeeIdNumber;
+	private int employeeIdNumber;
 
 	@Column(name = "personalIdNumber" )
-	int personalIdNumber;
+	private int personalIdNumber;
 
 	@Column(name = "firstName")
-	String firstName;
+	private String firstName;
 
 	@Column(name = "middleName")
-	String middleName;
+	private String middleName;
 
 	@Column(name = "lastName")
-	String lastName;
+	private String lastName;
 
 	@Column(name = "dayOfBirth")
-	int dayOfBirth;
+	private int dayOfBirth;
 
 	@Column(name = "monthOfBirth")
-	int monthOfBirth;
+	private int monthOfBirth;
 
 	@Column(name = "yearOfBirth")
-	int yearOfBirth;
+	private int yearOfBirth;
 
 	@Column(name = "cellularPhone")
-	String cellularPhone;
+	private String cellularPhone;
 
 	@Column(name = "homePhone")
-	String homePhone;
+	private String homePhone;
 
 	@Column(name = "city")
-	String city;
+	private String city;
 
 	@Column(name = "address")
-	String address;
+	private String address;
 
 	@Column(name = "postalCode")
-	String postalCode;
+	private String postalCode;
 
 	@Column(name = "qualification")
-	String qualification;
+	private String qualification;
 
 	@Column(name = "currentExperience")
-	String currentExperience;
+	private String currentExperience;
 
 	@Column(name = "startDateDay")
-	int startDateDay;
+	private int startDateDay;
 
 	@Column(name = "startDateMonth")
-	int startDateMonth;
+	private int startDateMonth;
 
 	@Column(name = "startDateYear")
-	int startDateYear;
+	private int startDateYear;
 
 	@Column(name = "endDateDay")
-	int endDateDay;
+	private int endDateDay;
 
 	@Column(name = "endDateMonth")
-	int endDateMonth;
+	private int endDateMonth;
 
 	@Column(name = "endDateYear")
-	int endDateYear;
+	private int endDateYear;
 
 	@Column(name = "typeOfEmployee")
-	String typeOfEmployee;
+	private String typeOfEmployee;
 
 	@Column(name = "gender")
-	String gender;
+	private String gender;
 
 	@Column(name = "maritalStatus")
-	String maritalStatus;
-	
+	private String maritalStatus;
+
 	@OneToMany(targetEntity = ContactPerson.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
 	private List<ContactPerson> contacts;
-	
+
 	@OneToMany(targetEntity = WorkHistory.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
 	private List<WorkHistory> workHistory;
-	
+
 	@OneToMany(targetEntity = EmployeeSalary.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
 	private List<EmployeeSalary> salary;
-//	
-//	@OneToMany(targetEntity = Time.class,cascade = CascadeType.ALL)
-//	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-//	private List<Time> time;
+	
+	@OneToMany(targetEntity = TimeInformation.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
+	private List<TimeInformation> time;
 }

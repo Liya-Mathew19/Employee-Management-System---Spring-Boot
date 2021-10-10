@@ -51,12 +51,12 @@ public class WorkHistoryController {
 
 	/*
 	 * getEmployeeWorkHistoryById() is used to get the working history of an employee based on employeeIdNumber
-	 * @param work_id
+	 * @param emp_id
 	 * @return WorkHistory
 	 * @method GET
 	 */
-	@GetMapping("/workhistory/{work_id}")
-	public ResponseEntity<WorkHistory> getEmployeeWorkHistoryById(@PathVariable("work_id") int id) {
+	@GetMapping("/workhistory/{emp_id}")
+	public ResponseEntity<WorkHistory> getEmployeeWorkHistoryById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<WorkHistory> entity = service.getEmployeeWorkHistoryById(id);
 			if (entity.isPresent()) {
@@ -108,8 +108,8 @@ public class WorkHistoryController {
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/workhistory/{work_id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeWorkHistoryById(@PathVariable("work_id") int id) {
+	@DeleteMapping("/workhistory/{emp_id}")
+	public ResponseEntity<HttpStatus> deleteEmployeeWorkHistoryById(@PathVariable("emp_id") int id) {
 		try {
 			service.deleteEmployeeWorkHistoryById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

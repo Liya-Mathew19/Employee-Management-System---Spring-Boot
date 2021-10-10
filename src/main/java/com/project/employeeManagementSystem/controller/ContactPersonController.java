@@ -26,7 +26,7 @@ import com.project.employeeManagementSystem.service.ContactPersonService;
 @RestController
 @RequestMapping("/contacts")
 public class ContactPersonController {
-	
+
 	@Autowired
 	ContactPersonService service;
 
@@ -49,13 +49,13 @@ public class ContactPersonController {
 	}
 
 	/*
-	 * getContactById() is used to get the contact information based on contact ID
-	 * @param contact_id
+	 * getContactById() is used to get the contact information based on Employee ID
+	 * @param emp_id
 	 * @return ContactPerson
 	 * @method GET
 	 */
-	@GetMapping("/contact_info/{contact_id}")
-	public ResponseEntity<ContactPerson> getContactById(@PathVariable("contact_id") int id) {
+	@GetMapping("/contact_info/{emp_id}")
+	public ResponseEntity<ContactPerson> getContactById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<ContactPerson> contact = service.getcontactById(id);
 			if (contact.isPresent()) {
@@ -100,14 +100,15 @@ public class ContactPersonController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	/*
-	 * deleteContactById() is used to delete the contact info based on contact ID
-	 * @param contact_id
+	 * deleteContactById() is used to delete the contact info based on Employee ID
+	 * @param emp_id
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/contact_info/{contact_id}")
-	public ResponseEntity<HttpStatus> deleteContactById(@PathVariable("contact_id") int id) {
+	@DeleteMapping("/contact_info/{emp_id}")
+	public ResponseEntity<HttpStatus> deleteContactById(@PathVariable("emp_id") int id) {
 		try {
 			service.deleteContactById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

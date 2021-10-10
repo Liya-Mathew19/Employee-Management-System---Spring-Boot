@@ -19,7 +19,7 @@ import com.project.employeeManagementSystem.model.EmployeeBasicDetails;
 import com.project.employeeManagementSystem.service.EmployeeBasicDetailsService;
 
 /*
- * EmployeeBasicDetailsController is responsible for processing user requests.
+ * EmployeeBasicDetailsController is responsible for processing user requests of employee basic details module
  * @author Liya Mathew
  * @since 08/10/2021
  */
@@ -38,15 +38,15 @@ public class EmployeeBasicDetailsController {
 	 */
 	@GetMapping("/employees")
 	public ResponseEntity<List<EmployeeBasicDetails>> getAllEmployees() {
-		try {
+		//try {
 			List<EmployeeBasicDetails> employeeList = service.getAllEmployees();
 			if (employeeList.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(employeeList, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+//		} catch (Exception e) {
+//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
 	}
 
 	/*

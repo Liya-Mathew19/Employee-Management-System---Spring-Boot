@@ -37,12 +37,12 @@ public class ContactPersonService {
 	}
 
 	/*
-	 * getcontactById() is used to get the contact details based on the contact ID
+	 * getcontactById() is used to get the contact details based on the Employee ID
 	 * @param id
 	 * @return ContactPerson
 	 */
 	public Optional<ContactPerson> getcontactById(int id) {
-		Optional<ContactPerson> contact = repository.findBycontactId(id);
+		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(id);
 		return contact;
 	}
 
@@ -52,7 +52,7 @@ public class ContactPersonService {
 	 * @return ContactPerson
 	 */
 	public ContactPerson createContact(ContactPerson entity) {
-		Optional<ContactPerson> contact = repository.findBycontactId(entity.getContactId());
+		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(contact.isPresent()) {
 			return this.updateContact(entity);
@@ -68,7 +68,7 @@ public class ContactPersonService {
 	 * @return ContactPerson
 	 */
 	public ContactPerson updateContact(ContactPerson entity) {
-		Optional<ContactPerson> contact = repository.findBycontactId(entity.getContactId());
+		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(contact.isPresent()) {
 			ContactPerson contactEntity = contact.get();
@@ -90,14 +90,14 @@ public class ContactPersonService {
 	} 
 
 	/*
-	 * deleteContactById() is used to delete the contact info based on contact ID
+	 * deleteContactById() is used to delete the contact info based on Employee ID
 	 * @param id
 	 * @return null
 	 */
 	public void deleteContactById(int id){
-		Optional<ContactPerson> contact = repository.findBycontactId(id);    
+		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(id);    
 		if(contact.isPresent()) {
-			repository.deleteBycontactId(id);
+			repository.deleteByemployeeIdNumber(id);
 		}
 		else {
 			return;

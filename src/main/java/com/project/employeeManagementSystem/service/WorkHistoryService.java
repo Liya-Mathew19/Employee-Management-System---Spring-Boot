@@ -21,10 +21,10 @@ import com.project.employeeManagementSystem.repository.WorkHistoryRepository;
 @Service
 @Transactional
 public class WorkHistoryService {
-	
+
 	@Autowired
 	private WorkHistoryRepository repository;
-	
+
 	/*
 	 * getAllEmployeesWorkHistory() is used to get working history of all the employees.
 	 * @return List
@@ -37,24 +37,24 @@ public class WorkHistoryService {
 			return new ArrayList<WorkHistory>();
 		}
 	}
-	
+
 	/*
 	 * getEmployeeWorkHistoryById() is used to get the working history of an employee based on employeeIdNumber
 	 * @param id
 	 * @return WorkHistory
 	 */
 	public Optional<WorkHistory> getEmployeeWorkHistoryById(int id) {
-		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(id);
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(id);
 		return employeeWork;
 	}
-	
+
 	/*
 	 * createEmployeeWorkHistory() is used to create a new working history, if not exist / update working history of an existing employee
 	 * @param entity
 	 * @return WorkHistory
 	 */
 	public WorkHistory createEmployeeWorkHistory(WorkHistory entity) {
-		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(entity.getEmployeeIdNumber());
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(employeeWork.isPresent()) {
 			return this.updateEmployeeWorkHistory(entity);
@@ -63,14 +63,14 @@ public class WorkHistoryService {
 			return entity;
 		}
 	}
-	
+
 	/*
 	 * updateEmployeeWorkHistory() is used to update the working history of an existing employee
 	 * @param entity
 	 * @return WorkHistory
 	 */
 	public WorkHistory updateEmployeeWorkHistory(WorkHistory entity) {
-		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(entity.getWorkhistoryIdNumber());
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(employeeWork.isPresent()) {
 			WorkHistory newEntity = employeeWork.get();
@@ -82,12 +82,12 @@ public class WorkHistoryService {
 			newEntity.setEmployerOfficePhone(entity.getEmployerOfficePhone());
 			newEntity.setPreviousQualification(entity.getPreviousQualification());
 			newEntity.setPreviousExperience(entity.getPreviousExperience());
-			newEntity.setpStartDateDay(entity.getpStartDateDay());
-			newEntity.setpStartDateMonth(entity.getpStartDateMonth());
-			newEntity.setpStartDateYear(entity.getpStartDateYear());
-			newEntity.setpEndDateDay(entity.getpEndDateDay());
-			newEntity.setpEndDateMonth(entity.getpEndDateMonth());
-			newEntity.setpEndDateYear(entity.getpEndDateYear());
+			newEntity.setPStartDateDay(entity.getPStartDateDay());
+			newEntity.setPStartDateMonth(entity.getPStartDateMonth());
+			newEntity.setPStartDateYear(entity.getPStartDateYear());
+			newEntity.setPEndDateDay(entity.getPEndDateDay());
+			newEntity.setPEndDateMonth(entity.getPEndDateMonth());
+			newEntity.setPEndDateYear(entity.getPEndDateYear());
 			newEntity = repository.save(newEntity);
 			return newEntity;
 		}
@@ -96,21 +96,21 @@ public class WorkHistoryService {
 			return entity;
 		}
 	} 
-	
+
 	/*
 	 * deleteEmployeeWorkHistoryById() is used to delete the working history data of an employee based on employeeIdNumber
 	 * @param id
 	 * @return null
 	 */
 	public void deleteEmployeeWorkHistoryById(int id) {
-		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(id);    
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(id);    
 		if(employeeWork.isPresent()) {
-			repository.deleteByworkhistoryIdNumber(id);
+			repository.deleteByemployeeIdNumber(id);
 		}
 		else {
 			return;
 		}
-		
+
 	}
 
 }

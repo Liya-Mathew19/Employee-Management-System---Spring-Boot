@@ -24,32 +24,32 @@ import lombok.NoArgsConstructor;
 public class ContactPerson {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	int contactId;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int contactId;
+
 	@Column(name = "employeeIdNumber" )
-	int employeeIdNumber;
-	
+	private int employeeIdNumber;
+
 	@Column(name = "cFirstName")
-	String cFirstName;
+	private String cFirstName;
 
 	@Column(name = "cMiddleName")
-	String cMiddleName;
+	private String cMiddleName;
 
 	@Column(name = "cLastName")
-	String cLastName;
+	private String cLastName;
 
 	@Column(name = "cCellularPhone")
-	String cCellularPhone;
+	private String cCellularPhone;
 
 	@Column(name = "cHomePhone")
-	String cHomePhone;
+	private String cHomePhone;
 
 	@Column(name = "cCity")
-	String cCity;
+	private String cCity;
 
 	@Column(name = "cAddress")
-	String cAddress;
+	private String cAddress;
 
 }
 

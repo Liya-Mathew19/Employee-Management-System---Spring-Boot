@@ -17,14 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.employeeManagementSystem.model.EmployeeSalary;
 import com.project.employeeManagementSystem.service.EmployeeSalaryService;
-
+/*
+ * EmployeeSalaryController is responsible for processing user requests.
+ * @author Kishore Kumar
+ * @since 09/10/2021
+ */
 @RestController
 @RequestMapping("/salary")
 public class EmployeeSalaryController {
-	
+
 	@Autowired
 	EmployeeSalaryService service;
 
+	/*
+	 * getAllEmployeeSalary() is used to get all the salary informations
+	 * @return List
+	 * @method GET
+	 */
 	@GetMapping("/employee_salary")
 	public ResponseEntity<List<EmployeeSalary>> getAllEmployeeSalary() {
 		try {
@@ -37,9 +46,15 @@ public class EmployeeSalaryController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@GetMapping("/employee_salary/{sal_id}")
-	public ResponseEntity<EmployeeSalary> getEmployeeSalaryById(@PathVariable("sal_id") int id) {
+
+	/*
+	 * getEmployeeSalaryById() is used to get the salary information based on Employee ID
+	 * @param emp_id
+	 * @return EmployeeSalary
+	 * @method GET
+	 */
+	@GetMapping("/employee_salary/{emp_id}")
+	public ResponseEntity<EmployeeSalary> getEmployeeSalaryById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<EmployeeSalary> entity = service.getEmployeeSalaryById(id);
 			if (entity.isPresent()) {
@@ -50,7 +65,13 @@ public class EmployeeSalaryController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
+	/*
+	 * createContact() is used to create a new salary info if not exist / update an existing salary info
+	 * @param empsal
+	 * @return EmployeeSalary
+	 * @method POST
+	 */
 	@PostMapping("/employee_salary")
 	public ResponseEntity<EmployeeSalary> createEmployeeSalary(@RequestBody EmployeeSalary empsal) {
 		try {
@@ -59,7 +80,13 @@ public class EmployeeSalaryController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
+	/*
+	 * updateEmployeeSalary() is used to update an existing salary info
+	 * @param empsal
+	 * @return EmployeeSalary
+	 * @method PUT
+	 */
 	@PutMapping("/employee_salary")
 	public ResponseEntity<EmployeeSalary> updateEmployeeSalary(@RequestBody EmployeeSalary empsal) {
 		try {
@@ -71,17 +98,23 @@ public class EmployeeSalaryController {
 		}catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 	}
-	
+
+	/*
+	 * deleteEmployeeSalaryById() is used to delete the salary info based on Employee ID
+	 * @param emp_id
+	 * @return HttpStatus
+	 * @method DELETE
+	 */
 	@DeleteMapping("/employee_salary/{emp_id}")
 	public ResponseEntity<HttpStatus> deleteEmployeeSalaryById(@PathVariable("emp_id") int id) {
 		try {
 			service.deleteEmployeeSalaryById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}catch (Exception e) {
-				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-			}
+		}catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
-	
+
 }

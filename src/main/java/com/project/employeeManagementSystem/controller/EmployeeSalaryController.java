@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +23,9 @@ import com.project.employeeManagementSystem.service.EmployeeSalaryService;
  * @author Kishore Kumar
  * @since 09/10/2021
  */
+
 @RestController
-@RequestMapping("/salary")
+@RequestMapping("/api/salary")
 public class EmployeeSalaryController {
 
 	@Autowired
@@ -53,10 +55,29 @@ public class EmployeeSalaryController {
 	 * @return EmployeeSalary
 	 * @method GET
 	 */
-	@GetMapping("/employee_salary/{emp_id}")
+	@GetMapping("/employee_salary_emp/{emp_id}")
 	public ResponseEntity<EmployeeSalary> getEmployeeSalaryById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<EmployeeSalary> entity = service.getEmployeeSalaryById(id);
+			if (entity.isPresent()) {
+				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
+			}
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	/*
+	 * getEmployeeSalaryBySalId() is used to get the salary information based on salary ID
+	 * @param sal_id
+	 * @return EmployeeSalary
+	 * @method GET
+	 */
+	@GetMapping("/employee_salary_sal/{sal_id}")
+	public ResponseEntity<EmployeeSalary> getEmployeeSalaryBySalId(@PathVariable("sal_id") int id) {
+		try {
+			Optional<EmployeeSalary> entity = service.getEmployeeSalaryBySalId(id);
 			if (entity.isPresent()) {
 				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
 			}
@@ -102,13 +123,13 @@ public class EmployeeSalaryController {
 	}
 
 	/*
-	 * deleteEmployeeSalaryById() is used to delete the salary info based on Employee ID
+	 * deleteEmployeeSalaryById() is used to delete the salary info based on Contact ID
 	 * @param emp_id
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/employee_salary/{emp_id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeSalaryById(@PathVariable("emp_id") int id) {
+	@DeleteMapping("/employee_salary/{contact_id}")
+	public ResponseEntity<HttpStatus> deleteEmployeeSalaryById(@PathVariable("contact_id") int id) {
 		try {
 			service.deleteEmployeeSalaryById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

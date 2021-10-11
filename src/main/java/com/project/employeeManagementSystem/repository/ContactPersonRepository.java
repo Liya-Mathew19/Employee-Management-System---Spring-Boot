@@ -18,6 +18,8 @@ import com.project.employeeManagementSystem.model.EmployeeBasicDetails;
 public interface ContactPersonRepository extends JpaRepository<ContactPerson, Integer> {
 	
 	Optional<ContactPerson> findByemployeeIdNumber(int employee_id_number);
+	
+	Optional<ContactPerson> findBycontactId(int contact_id);
 
-	void deleteByemployeeIdNumber(int employee_id_number);
+	void deleteBycontactId(int contact_id);
 }

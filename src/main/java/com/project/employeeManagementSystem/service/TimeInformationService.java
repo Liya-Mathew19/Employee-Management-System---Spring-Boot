@@ -1,6 +1,8 @@
 package com.project.employeeManagementSystem.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +12,11 @@ import org.springframework.stereotype.Service;
 import com.project.employeeManagementSystem.model.TimeInformation;
 import com.project.employeeManagementSystem.repository.TimeInformationRepository;
 
+/*
+ * TimeInformationService is used to perform service tasks.
+ * @author Soumayadip Nath
+ * @since 10/10/2021
+ */
 @Service
 @Transactional
 public class TimeInformationService {
@@ -17,26 +24,99 @@ public class TimeInformationService {
 	@Autowired
 	private TimeInformationRepository repository;
 	
-	public List<TimeInformation> getTimeInformations() {
-		return repository.findAll();
+	/*
+	 * getAllTimeInfo() is used to get time information of all the employees.
+	 * @return List
+	 */
+	public List<TimeInformation> getAllTimeInfo() {
+		List<TimeInformation> employeeTimeInformation = repository.findAll();
+		if(employeeTimeInformation.size() > 0) {
+			return employeeTimeInformation;
+		} else {
+			return new ArrayList<TimeInformation>();
+		}
 	}
 
-	public TimeInformation getTimeInformation(Integer Id) {
-		return repository.getOne(Id);
+	/*
+	 * getEmployeeTimeInformationById() is used to get the time information of an employee based on employeeIdNumber
+	 * @param id
+	 * @return TimeInformation
+	 */
+	public Optional<TimeInformation> getEmployeeTimeInformationById(int id) {
+		Optional<TimeInformation> time = repository.findByemployeeIdNumber(id);
+		return time;
+	}
+	
+	/*
+	 * getEmployeeTimeInformationByTimeId() is used to get the time information of an employee based on work id
+	 * @param id
+	 * @return TimeInformation
+	 */
+	public Optional<TimeInformation> getEmployeeTimeInformationByTimeId(int id) {
+		Optional<TimeInformation> time = repository.findBytimeId(id);
+		return time;
 	}
 
-	public TimeInformation addTimeInformation(TimeInformation timeinformation) {
-		repository.save(timeinformation);
-		return timeinformation;
+	/*
+	 * createEmployeeTimeInformation() is used to create a new time information, if not exist / update time information of an existing employee
+	 * @param entity
+	 * @return TimeInformation
+	 */
+	public TimeInformation createEmployeeTimeInformation(TimeInformation entity) {
+		Optional<TimeInformation> time = repository.findBytimeId(entity.getTimeId());
+
+		if(time.isPresent()) {
+			return this.updateEmployeeTimeInformation(entity);
+		} else {
+			entity = repository.save(entity);
+			return entity;
+		}
 	}
 
-	public TimeInformation updateTimeInformation(TimeInformation timeinformation) {
-		repository.save(timeinformation);
-		return timeinformation;
-	}
+	/*
+	 * updateEmployeeTimeInformation() is used to update the time information of an existing employee
+	 * @param entity
+	 * @return TimeInformation
+	 */
+	public TimeInformation updateEmployeeTimeInformation(TimeInformation entity) {
+		Optional<TimeInformation> time = repository.findBytimeId(entity.getTimeId());
 
-	public void deleteTimeInformation(Integer parseLong) {
-		TimeInformation entity=repository.getOne(parseLong);
-		repository.delete(entity);
+		if(time.isPresent()) {
+			TimeInformation timeData = time.get();
+			timeData.setEmployeeIdNumber(entity.getEmployeeIdNumber());
+			timeData.setWorkred_Hours(entity.getWorkred_Hours());
+			timeData.setOff_Hours(entity.getOff_Hours());
+			timeData.setDays_Off(entity.getDays_Off());
+			timeData.setOver_Time(entity.getOver_Time());
+			timeData.setExtra_Days(entity.getExtra_Days());
+			timeData.setW_From_Date_Day(entity.getW_From_Date_Day());
+			timeData.setW_From_Date_Month(entity.getW_From_Date_Month());
+			timeData.setW_From_Date_Year(entity.getW_From_Date_Year());
+			timeData.setW_To_Date_Day(entity.getW_To_Date_Day());
+			timeData.setW_To_Date_Month(entity.getW_To_Date_Month());
+			timeData.setW_To_Date_Year(entity.getW_To_Date_Year());
+			timeData = repository.save(timeData);
+			return timeData;
+		}
+		else {
+			entity = null;
+			return entity;
+		}
+	} 
+
+	/*
+	 * deleteEmployeeTimeInformationById() is used to delete the time information data of an employee based on work id
+	 * @param id
+	 * @return null
+	 */
+	public void deleteEmployeeTimeInformationById(int id) {
+		Optional<TimeInformation> time = repository.findBytimeId(id);    
+		if(time.isPresent()) {
+			repository.deleteBytimeId(id);
+		}
+		else {
+			return;
+		}
+
 	}
 }

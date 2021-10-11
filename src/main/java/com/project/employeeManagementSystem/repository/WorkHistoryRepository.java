@@ -18,6 +18,7 @@ public interface WorkHistoryRepository extends JpaRepository<WorkHistory, Intege
 
 	Optional<WorkHistory> findByemployeeIdNumber(int employee_id_number);
 
-	void deleteByemployeeIdNumber(int employee_id_number);
+	Optional<WorkHistory> findByworkhistoryIdNumber(int work_id);
 
+	void deleteByworkhistoryIdNumber(int work_id);
 }

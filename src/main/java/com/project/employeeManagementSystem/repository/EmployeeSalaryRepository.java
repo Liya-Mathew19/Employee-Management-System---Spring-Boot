@@ -18,6 +18,9 @@ import com.project.employeeManagementSystem.model.EmployeeSalary;
 public interface EmployeeSalaryRepository extends JpaRepository<EmployeeSalary, Integer> {
 
 	Optional<EmployeeSalary> findByemployeeIdNumber(int employee_id_number);
+	
+	Optional<EmployeeSalary> findBysalaryId(int salary_id);
 
-	void deleteByemployeeIdNumber(int employee_id_number);
+	void deleteBysalaryId(int salary_id);
 }
+

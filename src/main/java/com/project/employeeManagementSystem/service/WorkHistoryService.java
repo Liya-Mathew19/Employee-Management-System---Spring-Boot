@@ -47,6 +47,16 @@ public class WorkHistoryService {
 		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(id);
 		return employeeWork;
 	}
+	
+	/*
+	 * getEmployeeWorkHistoryByWorkId() is used to get the working history of an employee based on work id
+	 * @param id
+	 * @return WorkHistory
+	 */
+	public Optional<WorkHistory> getEmployeeWorkHistoryByWorkId(int id) {
+		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(id);
+		return employeeWork;
+	}
 
 	/*
 	 * createEmployeeWorkHistory() is used to create a new working history, if not exist / update working history of an existing employee
@@ -54,7 +64,7 @@ public class WorkHistoryService {
 	 * @return WorkHistory
 	 */
 	public WorkHistory createEmployeeWorkHistory(WorkHistory entity) {
-		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getWorkhistoryIdNumber());
 
 		if(employeeWork.isPresent()) {
 			return this.updateEmployeeWorkHistory(entity);
@@ -70,7 +80,7 @@ public class WorkHistoryService {
 	 * @return WorkHistory
 	 */
 	public WorkHistory updateEmployeeWorkHistory(WorkHistory entity) {
-		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getWorkhistoryIdNumber());
 
 		if(employeeWork.isPresent()) {
 			WorkHistory newEntity = employeeWork.get();
@@ -98,14 +108,14 @@ public class WorkHistoryService {
 	} 
 
 	/*
-	 * deleteEmployeeWorkHistoryById() is used to delete the working history data of an employee based on employeeIdNumber
+	 * deleteEmployeeWorkHistoryById() is used to delete the working history data of an employee based on work id
 	 * @param id
 	 * @return null
 	 */
 	public void deleteEmployeeWorkHistoryById(int id) {
-		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(id);    
+		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(id);    
 		if(employeeWork.isPresent()) {
-			repository.deleteByemployeeIdNumber(id);
+			repository.deleteByworkhistoryIdNumber(id);
 		}
 		else {
 			return;

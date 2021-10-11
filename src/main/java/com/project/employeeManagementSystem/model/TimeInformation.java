@@ -11,6 +11,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*
+ * TimeInformation model class contains the time info data of the employee.
+ * @author Soumayadip Nath
+ * @since 10/10/2021
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

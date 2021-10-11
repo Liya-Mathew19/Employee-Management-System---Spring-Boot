@@ -39,15 +39,15 @@ public class EmployeeBasicDetailsController {
 	 */
 	@GetMapping("/employees")
 	public ResponseEntity<List<EmployeeBasicDetails>> getAllEmployees() {
-		//try {
+		try {
 			List<EmployeeBasicDetails> employeeList = service.getAllEmployees();
 			if (employeeList.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 			return new ResponseEntity<>(employeeList, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	/*

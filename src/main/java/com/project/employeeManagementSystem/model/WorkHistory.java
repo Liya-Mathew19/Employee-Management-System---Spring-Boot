@@ -24,10 +24,6 @@ import lombok.NoArgsConstructor;
 public class WorkHistory {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "workhistoryIdNumber" )
-	private int workhistoryIdNumber;
-
 	@Column(name = "employeeIdNumber" )
 	private int employeeIdNumber;
 

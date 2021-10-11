@@ -47,16 +47,6 @@ public class WorkHistoryService {
 		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(id);
 		return employeeWork;
 	}
-	
-	/*
-	 * getEmployeeWorkHistoryByWorkId() is used to get the working history of an employee based on work id
-	 * @param id
-	 * @return WorkHistory
-	 */
-	public Optional<WorkHistory> getEmployeeWorkHistoryByWorkId(int id) {
-		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(id);
-		return employeeWork;
-	}
 
 	/*
 	 * createEmployeeWorkHistory() is used to create a new working history, if not exist / update working history of an existing employee
@@ -64,7 +54,7 @@ public class WorkHistoryService {
 	 * @return WorkHistory
 	 */
 	public WorkHistory createEmployeeWorkHistory(WorkHistory entity) {
-		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getWorkhistoryIdNumber());
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(employeeWork.isPresent()) {
 			return this.updateEmployeeWorkHistory(entity);
@@ -80,7 +70,7 @@ public class WorkHistoryService {
 	 * @return WorkHistory
 	 */
 	public WorkHistory updateEmployeeWorkHistory(WorkHistory entity) {
-		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getWorkhistoryIdNumber());
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(employeeWork.isPresent()) {
 			WorkHistory newEntity = employeeWork.get();
@@ -113,9 +103,9 @@ public class WorkHistoryService {
 	 * @return null
 	 */
 	public void deleteEmployeeWorkHistoryById(int id) {
-		Optional<WorkHistory> employeeWork = repository.findByworkhistoryIdNumber(id);    
+		Optional<WorkHistory> employeeWork = repository.findByemployeeIdNumber(id);    
 		if(employeeWork.isPresent()) {
-			repository.deleteByworkhistoryIdNumber(id);
+			repository.deleteByemployeeIdNumber(id);
 		}
 		else {
 			return;

@@ -46,16 +46,6 @@ public class EmployeeSalaryService {
 		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findByemployeeIdNumber(id);
 		return empsal;
 	}
-	
-	/*
-	 * getEmployeeSalaryBySalId() is used to get the salary details based on the salary ID
-	 * @param id
-	 * @return EmployeeSalary
-	 */
-	public Optional<EmployeeSalary> getEmployeeSalaryBySalId(int id) {
-		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findBysalaryId(id);
-		return empsal;
-	}
 
 	/*
 	 * createEmployeeSalary() is used to create a new salary info if not exist / update an existing salary info
@@ -63,7 +53,7 @@ public class EmployeeSalaryService {
 	 * @return EmployeeSalary
 	 */
 	public EmployeeSalary createEmployeeSalary(EmployeeSalary entity) {
-		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findByemployeeIdNumber(entity.getSalaryId());
+		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(empsal.isPresent()) {
 			return this.updateEmployeeSalary(entity);
@@ -79,7 +69,7 @@ public class EmployeeSalaryService {
 	 * @return EmployeeSalary
 	 */
 	public EmployeeSalary updateEmployeeSalary(EmployeeSalary entity) {
-		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findByemployeeIdNumber(entity.getSalaryId());
+		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(empsal.isPresent()) {
 			EmployeeSalary newEntity = empsal.get();
@@ -121,9 +111,9 @@ public class EmployeeSalaryService {
 	 * @return null
 	 */
 	public void deleteEmployeeSalaryById(int id) {
-		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findBysalaryId(id);
+		Optional<EmployeeSalary> empsal = employeeSalaryRepository.findByemployeeIdNumber(id);
 		if(empsal.isPresent()) {
-			employeeSalaryRepository.deleteBysalaryId(id);
+			employeeSalaryRepository.deleteByemployeeIdNumber(id);
 		}
 		else {
 			return;

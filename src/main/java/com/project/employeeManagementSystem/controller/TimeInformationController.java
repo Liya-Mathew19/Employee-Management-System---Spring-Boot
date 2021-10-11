@@ -56,29 +56,10 @@ public class TimeInformationController {
 	 * @return TimeInformation
 	 * @method GET
 	 */
-	@GetMapping("/timeInfo_emp/{emp_id}")
+	@GetMapping("/timeInfo/{emp_id}")
 	public ResponseEntity<TimeInformation> getEmployeeTimeInformationById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<TimeInformation> entity = myService.getEmployeeTimeInformationById(id);
-			if (entity.isPresent()) {
-				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
-			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	/*
-	 * getEmployeeTimeInformationById() is used to get the time information of an employee based on work id
-	 * @param time_id
-	 * @return TimeInformation
-	 * @method GET
-	 */
-	@GetMapping("/timeInfo_time/{time_id}")
-	public ResponseEntity<TimeInformation> getEmployeeTimeInformationByWorkId(@PathVariable("time_id") int id) {
-		try {
-			Optional<TimeInformation> entity = myService.getEmployeeTimeInformationByTimeId(id);
 			if (entity.isPresent()) {
 				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
 			}
@@ -128,8 +109,8 @@ public class TimeInformationController {
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/timeInfo/{time_id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeTimeInformationById(@PathVariable("time_id") int id) {
+	@DeleteMapping("/timeInfo/{emp_id}")
+	public ResponseEntity<HttpStatus> deleteEmployeeTimeInformationById(@PathVariable("emp_id") int id) {
 		try {
 			myService.deleteEmployeeTimeInformationById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -55,29 +55,10 @@ public class EmployeeSalaryController {
 	 * @return EmployeeSalary
 	 * @method GET
 	 */
-	@GetMapping("/employee_salary_emp/{emp_id}")
+	@GetMapping("/employee_salary/{emp_id}")
 	public ResponseEntity<EmployeeSalary> getEmployeeSalaryById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<EmployeeSalary> entity = service.getEmployeeSalaryById(id);
-			if (entity.isPresent()) {
-				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
-			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	/*
-	 * getEmployeeSalaryBySalId() is used to get the salary information based on salary ID
-	 * @param sal_id
-	 * @return EmployeeSalary
-	 * @method GET
-	 */
-	@GetMapping("/employee_salary_sal/{sal_id}")
-	public ResponseEntity<EmployeeSalary> getEmployeeSalaryBySalId(@PathVariable("sal_id") int id) {
-		try {
-			Optional<EmployeeSalary> entity = service.getEmployeeSalaryBySalId(id);
 			if (entity.isPresent()) {
 				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
 			}
@@ -128,8 +109,8 @@ public class EmployeeSalaryController {
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/employee_salary/{contact_id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeSalaryById(@PathVariable("contact_id") int id) {
+	@DeleteMapping("/employee_salary/{emp_id}")
+	public ResponseEntity<HttpStatus> deleteEmployeeSalaryById(@PathVariable("emp_id") int id) {
 		try {
 			service.deleteEmployeeSalaryById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

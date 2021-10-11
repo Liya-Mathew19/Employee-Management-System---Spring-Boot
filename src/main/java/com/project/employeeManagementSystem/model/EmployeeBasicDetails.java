@@ -101,20 +101,5 @@ public class EmployeeBasicDetails {
 
 	@Column(name = "maritalStatus")
 	private String maritalStatus;
-
-	@OneToMany(targetEntity = ContactPerson.class,cascade = CascadeType.ALL)
-	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-	private List<ContactPerson> contacts;
-
-	@OneToMany(targetEntity = WorkHistory.class,cascade = CascadeType.ALL)
-	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-	private List<WorkHistory> workHistory;
-
-	@OneToMany(targetEntity = EmployeeSalary.class,cascade = CascadeType.ALL)
-	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-	private List<EmployeeSalary> salary;
 	
-	@OneToMany(targetEntity = TimeInformation.class,cascade = CascadeType.ALL)
-	@JoinColumn(name = "employeeIdNumber",referencedColumnName = "employeeIdNumber")
-	private List<TimeInformation> time;
 }

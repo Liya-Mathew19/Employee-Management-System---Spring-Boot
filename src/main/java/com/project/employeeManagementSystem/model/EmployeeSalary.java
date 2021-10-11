@@ -24,9 +24,6 @@ import lombok.NoArgsConstructor;
 public class EmployeeSalary {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int salaryId;
-
 	@Column(name = "employeeIdNumber")
 	private int employeeIdNumber;
 

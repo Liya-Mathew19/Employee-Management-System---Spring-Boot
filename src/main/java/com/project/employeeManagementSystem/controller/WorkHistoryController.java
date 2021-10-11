@@ -56,29 +56,10 @@ public class WorkHistoryController {
 	 * @return WorkHistory
 	 * @method GET
 	 */
-	@GetMapping("/workhistory_emp/{emp_id}")
+	@GetMapping("/workhistory/{emp_id}")
 	public ResponseEntity<WorkHistory> getEmployeeWorkHistoryById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<WorkHistory> entity = service.getEmployeeWorkHistoryById(id);
-			if (entity.isPresent()) {
-				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
-			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	/*
-	 * getEmployeeWorkHistoryById() is used to get the working history of an employee based on work id
-	 * @param work_id
-	 * @return WorkHistory
-	 * @method GET
-	 */
-	@GetMapping("/workhistory_work/{work_id}")
-	public ResponseEntity<WorkHistory> getEmployeeWorkHistoryByWorkId(@PathVariable("work_id") int id) {
-		try {
-			Optional<WorkHistory> entity = service.getEmployeeWorkHistoryByWorkId(id);
 			if (entity.isPresent()) {
 				return new ResponseEntity<>(entity.get(), HttpStatus.OK);
 			}
@@ -128,8 +109,8 @@ public class WorkHistoryController {
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/workhistory/{work_id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeWorkHistoryById(@PathVariable("work_id") int id) {
+	@DeleteMapping("/workhistory/{emp_id}")
+	public ResponseEntity<HttpStatus> deleteEmployeeWorkHistoryById(@PathVariable("emp_id") int id) {
 		try {
 			service.deleteEmployeeWorkHistoryById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

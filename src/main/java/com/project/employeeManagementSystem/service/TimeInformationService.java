@@ -46,16 +46,6 @@ public class TimeInformationService {
 		Optional<TimeInformation> time = repository.findByemployeeIdNumber(id);
 		return time;
 	}
-	
-	/*
-	 * getEmployeeTimeInformationByTimeId() is used to get the time information of an employee based on work id
-	 * @param id
-	 * @return TimeInformation
-	 */
-	public Optional<TimeInformation> getEmployeeTimeInformationByTimeId(int id) {
-		Optional<TimeInformation> time = repository.findBytimeId(id);
-		return time;
-	}
 
 	/*
 	 * createEmployeeTimeInformation() is used to create a new time information, if not exist / update time information of an existing employee
@@ -63,7 +53,7 @@ public class TimeInformationService {
 	 * @return TimeInformation
 	 */
 	public TimeInformation createEmployeeTimeInformation(TimeInformation entity) {
-		Optional<TimeInformation> time = repository.findBytimeId(entity.getTimeId());
+		Optional<TimeInformation> time = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(time.isPresent()) {
 			return this.updateEmployeeTimeInformation(entity);
@@ -79,7 +69,7 @@ public class TimeInformationService {
 	 * @return TimeInformation
 	 */
 	public TimeInformation updateEmployeeTimeInformation(TimeInformation entity) {
-		Optional<TimeInformation> time = repository.findBytimeId(entity.getTimeId());
+		Optional<TimeInformation> time = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(time.isPresent()) {
 			TimeInformation timeData = time.get();
@@ -110,9 +100,9 @@ public class TimeInformationService {
 	 * @return null
 	 */
 	public void deleteEmployeeTimeInformationById(int id) {
-		Optional<TimeInformation> time = repository.findBytimeId(id);    
+		Optional<TimeInformation> time = repository.findByemployeeIdNumber(id);    
 		if(time.isPresent()) {
-			repository.deleteBytimeId(id);
+			repository.deleteByemployeeIdNumber(id);
 		}
 		else {
 			return;

@@ -23,10 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbl_time_information")
 public class TimeInformation {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int timeId;
-	
+	@Id	
 	@Column(name = "employeeIdNumber" )
 	int employeeIdNumber;
 	

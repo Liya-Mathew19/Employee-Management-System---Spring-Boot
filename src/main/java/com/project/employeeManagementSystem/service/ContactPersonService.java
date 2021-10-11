@@ -45,16 +45,6 @@ public class ContactPersonService {
 		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(id);
 		return contact;
 	}
-	
-	/*
-	 * getcontactByContactId() is used to get the contact details based on the contact ID
-	 * @param id
-	 * @return ContactPerson
-	 */
-	public Optional<ContactPerson> getcontactByContactId(int id) {
-		Optional<ContactPerson> contact = repository.findBycontactId(id);
-		return contact;
-	}
 
 	/*
 	 * createContact() is used to create a new contact info if not exist / update an existing contact info
@@ -62,7 +52,7 @@ public class ContactPersonService {
 	 * @return ContactPerson
 	 */
 	public ContactPerson createContact(ContactPerson entity) {
-		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(entity.getContactId());
+		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(contact.isPresent()) {
 			return this.updateContact(entity);
@@ -78,7 +68,7 @@ public class ContactPersonService {
 	 * @return ContactPerson
 	 */
 	public ContactPerson updateContact(ContactPerson entity) {
-		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(entity.getContactId());
+		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(entity.getEmployeeIdNumber());
 
 		if(contact.isPresent()) {
 			ContactPerson contactEntity = contact.get();
@@ -107,7 +97,7 @@ public class ContactPersonService {
 	public void deleteContactById(int id){
 		Optional<ContactPerson> contact = repository.findByemployeeIdNumber(id);    
 		if(contact.isPresent()) {
-			repository.deleteBycontactId(id);
+			repository.deleteByemployeeIdNumber(id);
 		}
 		else {
 			return;

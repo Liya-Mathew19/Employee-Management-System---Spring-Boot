@@ -24,9 +24,6 @@ import lombok.NoArgsConstructor;
 public class ContactPerson {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int contactId;
-
 	@Column(name = "employeeIdNumber" )
 	private int employeeIdNumber;
 

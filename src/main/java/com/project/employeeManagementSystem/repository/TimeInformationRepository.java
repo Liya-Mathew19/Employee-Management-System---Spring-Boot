@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.project.employeeManagementSystem.model.EmployeeBasicDetails;
 import com.project.employeeManagementSystem.model.TimeInformation;
 import com.project.employeeManagementSystem.model.WorkHistory;
 
@@ -17,7 +18,5 @@ import com.project.employeeManagementSystem.model.WorkHistory;
 public interface TimeInformationRepository extends JpaRepository<TimeInformation, Integer>{
 	Optional<TimeInformation> findByemployeeIdNumber(int employee_id_number);
 
-	Optional<TimeInformation> findBytimeId(int time_id);
-
-	void deleteBytimeId(int time_id);
+	void deleteByemployeeIdNumber(int employee_id_number);
 }

@@ -56,29 +56,10 @@ public class ContactPersonController {
 	 * @return ContactPerson
 	 * @method GET
 	 */
-	@GetMapping("/contact_info_emp/{emp_id}")
+	@GetMapping("/contact_info/{emp_id}")
 	public ResponseEntity<ContactPerson> getContactById(@PathVariable("emp_id") int id) {
 		try {
 			Optional<ContactPerson> contact = service.getcontactById(id);
-			if (contact.isPresent()) {
-				return new ResponseEntity<>(contact.get(), HttpStatus.OK);
-			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	/*
-	 * getContactById() is used to get the contact information based on contact ID
-	 * @param contact_id
-	 * @return ContactPerson
-	 * @method GET
-	 */
-	@GetMapping("/contact_info_contact/{contact_id}")
-	public ResponseEntity<ContactPerson> getContactByContactId(@PathVariable("contact_id") int id) {
-		try {
-			Optional<ContactPerson> contact = service.getcontactByContactId(id);
 			if (contact.isPresent()) {
 				return new ResponseEntity<>(contact.get(), HttpStatus.OK);
 			}
@@ -128,8 +109,8 @@ public class ContactPersonController {
 	 * @return HttpStatus
 	 * @method DELETE
 	 */
-	@DeleteMapping("/contact_info/{contact_id}")
-	public ResponseEntity<HttpStatus> deleteContactById(@PathVariable("contact_id") int id) {
+	@DeleteMapping("/contact_info/{emp_id}")
+	public ResponseEntity<HttpStatus> deleteContactById(@PathVariable("emp_id") int id) {
 		try {
 			service.deleteContactById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

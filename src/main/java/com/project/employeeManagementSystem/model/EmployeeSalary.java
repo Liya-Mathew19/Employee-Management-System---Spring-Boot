@@ -2,8 +2,6 @@ package com.project.employeeManagementSystem.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,8 +11,9 @@ import lombok.NoArgsConstructor;
 
 /*
  * EmployeeSalary model class contains the data of the application.
+ * 
  * @author Kishore Kumar
- * @since 09/10/2021
+ * @since 09.10.2021
  */
 @Data
 @NoArgsConstructor

@@ -1,15 +1,10 @@
 package com.project.employeeManagementSystem.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,8 +13,9 @@ import lombok.NoArgsConstructor;
 
 /*
  * EmployeeBasicDetails model class contains the data of the application.
+ * 
  * @author Liya Mathew
- * @since 08/10/2021
+ * @since 08.10.2021
  */
 @Data
 @NoArgsConstructor

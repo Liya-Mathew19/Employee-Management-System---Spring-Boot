@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +20,9 @@ import com.project.employeeManagementSystem.service.EmployeeBasicDetailsService;
 
 /*
  * EmployeeBasicDetailsController is responsible for processing user requests of employee basic details module
+ * 
  * @author Liya Mathew
- * @since 08/10/2021
+ * @since 08.10.2021
  */
 
 @RestController
@@ -105,7 +105,7 @@ public class EmployeeBasicDetailsController {
 	/*
 	 * deleteEmployeeById() is used to delete the employee data based on employeeIdNumber
 	 * @param id
-	 * @return HttpStatus
+	 * @return ResponseEntity<>(T)
 	 * @method DELETE
 	 */
 	@DeleteMapping("/employees/{emp_id}")

@@ -13,8 +13,9 @@ import com.project.employeeManagementSystem.model.ContactPerson;
 import com.project.employeeManagementSystem.repository.ContactPersonRepository;
 /*
  * ContactPersonService is used to perform service tasks of Contact Person Information module
- * @author Liya Mathew
- * @since 09/10/2021
+ * 
+ * @author Aiswarya K S
+ * @since 09.10.2021
  */
 @Service
 @Transactional

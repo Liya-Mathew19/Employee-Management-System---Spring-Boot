@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +20,9 @@ import com.project.employeeManagementSystem.service.ContactPersonService;
 
 /*
  * ContactPersonController is responsible for processing user requests of contact informations
- * @author Liya Mathew
- * @since 09/10/2021
+ * 
+ * @author Aiswarya K S
+ * @since 09.10.2021
  */
 
 @RestController
@@ -106,7 +106,7 @@ public class ContactPersonController {
 	/*
 	 * deleteContactById() is used to delete the contact info based on Contact ID
 	 * @param emp_id
-	 * @return HttpStatus
+	 * @return ResponseEntity<>(T)
 	 * @method DELETE
 	 */
 	@DeleteMapping("/contact_info/{emp_id}")

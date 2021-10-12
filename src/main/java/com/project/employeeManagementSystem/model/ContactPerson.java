@@ -2,8 +2,6 @@ package com.project.employeeManagementSystem.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,8 +11,9 @@ import lombok.NoArgsConstructor;
 
 /*
  * ContactPerson model class contains the data required to store and retrieve contact person informations
- * @author Liya Mathew
- * @since 09/10/2021
+ * 
+ * @author Aiswarya K S
+ * @since 09.10.2021
  */
 @Data
 @NoArgsConstructor

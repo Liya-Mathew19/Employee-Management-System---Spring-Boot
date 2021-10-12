@@ -14,8 +14,9 @@ import com.project.employeeManagementSystem.repository.EmployeeSalaryRepository;
 
 /*
  * EmployeeSalaryService is used to perform service tasks of Salary Information module
+ * 
  * @author Kishore Kumar
- * @since 09/10/2021
+ * @since 09.10.2021
  */
 @Service
 @Transactional

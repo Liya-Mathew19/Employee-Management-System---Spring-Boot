@@ -13,9 +13,10 @@ import com.project.employeeManagementSystem.model.WorkHistory;
 import com.project.employeeManagementSystem.repository.WorkHistoryRepository;
 
 /*
- * WorkHistoryServices is used to perform service tasks.
+ * WorkHistoryServices is used to perform service tasks of working history module
+ * 
  * @author Abhirami K P
- * @since 09/10/2021
+ * @since 09.10.2021
  */
 
 @Service

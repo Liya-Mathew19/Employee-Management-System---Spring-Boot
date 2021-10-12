@@ -13,9 +13,10 @@ import com.project.employeeManagementSystem.model.TimeInformation;
 import com.project.employeeManagementSystem.repository.TimeInformationRepository;
 
 /*
- * TimeInformationService is used to perform service tasks.
+ * TimeInformationService is used to perform service tasks of time info module
+ * 
  * @author Soumayadip Nath
- * @since 10/10/2021
+ * @since 10.10.2021
  */
 @Service
 @Transactional
